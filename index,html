@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>deixa‑eu‑amar 💖</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .frase {
+      font-size: 2.5rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+      z-index: 10;
+    }
+
+    .frase.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Corações */
+    .coracao {
+      position: absolute;
+      top: -50px;
+      color: pink;
+      font-size: 24px;
+      animation: cair 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Buquê de flores */
+    .flores {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 150px;
+      opacity: 0.9;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Frases -->
+  <div id="mensagem1" class="frase">Deixa eu amar você</div>
+  <div id="mensagem2" class="frase" style="margin-top: 40px;"> Eu quero sentir seu cheiro</div>
+
+  <!-- Buquê verde -->
+  <img src="https://i.imgur.com/YDYUS0b.png" alt="flores verdes" class="flores">
+
+  <!-- Corações animados -->
+  <script>
+    // Mostra frases com delay
+    setTimeout(() => {
+      document.getElementById("mensagem1").classList.add("mostrar");
+    }, 1000);
+    setTimeout(() => {
+      document.getElementById("mensagem2").classList.add("mostrar");
+    }, 4000);
+
+    // Corações aleatórios
+    function criarCoracao() {
+      const coracao = document.createElement("div");
+      coracao.classList.add("coracao");
+      coracao.innerText = "💖";
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.fontSize = Math.random() * 20 + 15 + "px";
+      coracao.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 10000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+
+</body>
+</html>
+
